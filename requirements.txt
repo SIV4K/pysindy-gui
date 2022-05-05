@@ -1,6 +1,6 @@
 pandas
 numpy
 pysindy
-dearpygui
+dearpygui==0.6.415
 
 

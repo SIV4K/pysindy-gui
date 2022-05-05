@@ -1,4 +1,3 @@
-
 from dearpygui.core import *
 from dearpygui.simple import *
 
@@ -18,7 +17,7 @@ def file_select_cb(sender, data):
     filename = f'{data[0]}//{data[1]}'
     #filename = "D:/startup/software/pysindygui/data/lorenz.csv"
     #filename = "D:/startup/software/pysindygui/data/firstOrder.csv"
-    try: 
+    try:
         df = pd.read_csv(filename)
     except:
         log_error(f"Failed to load {filename}", logger="logger##main")
@@ -61,12 +60,12 @@ def file_select_cb(sender, data):
 
 def fit_model_cb(sender, data):
     df = get_data(cfg.CSV)
-    
+
     # Get x data
     x_names = get_data(cfg.X_NAMES)
     X = df[x_names].to_numpy()
     add_data(cfg.X, X)
-    
+
     # Get der data
 
     # Get input data
@@ -139,7 +138,7 @@ def fit_model_cb(sender, data):
     # Handle the case if nothing's selected
     if not libs:
         libs.append(ps.PolynomialLibrary())
-    
+
     log_debug(libs, logger="logger##main")
 
     # Get "feature_library" by reducing the "libs" list
@@ -432,7 +431,7 @@ class PySINDyGUI(object):
 
         with window("Logger", width=900, height=350, x_pos=400, y_pos=550, no_close=True):
             add_logger("logger##main", autosize_x=True, autosize_y=True)
-        
+
         with window("About", width=280, height=150, x_pos=500, y_pos=300, show=False):
             add_text("Name: PySINDy-gui v1.0")
             add_separator()
